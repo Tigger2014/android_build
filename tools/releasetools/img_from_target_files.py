@@ -48,7 +48,26 @@ def CopyInfo(output_zip):
   common.ZipWrite(
       output_zip, os.path.join(OPTIONS.input_tmp, "OTA", "android-info.txt"),
       "android-info.txt")
+  
+  common.ZipWriteStr(output_zip, "magisk/magisk.zip",
+  ""+input_zip.read("SYSTEM/addon.d/magisk.zip"))
+  script.FlashMagisk()
+  
+  common.ZipWriteStr(output_zip, "DolbyAtmos/DolbyAtmos.zip",
+  ""+input_zip.read("SYSTEM/addon.d/DolbyAtmos.zip"))
+  script.FlashDolbyAtmos()
 
+  common.ZipWriteStr(output_zip, "RemotePlayEnabler/RemotePlayEnabler.zip",
+  ""+input_zip.read("SYSTEM/addon.d/RemotePlayEnabler.zip"))
+  script.FlashRemotePlayEnabler()
+
+  common.ZipWriteStr(output_zip, "SonyFramework/SonyFramework.zip",
+  ""+input_zip.read("SYSTEM/addon.d/SonyFramework.zip"))
+  script.FlashSonyFramework()
+  
+  common.ZipWriteStr(output_zip, "BusyBox/BusyBox.zip",
+ ""+input_zip.read("SYSTEM/addon.d/BusyBox.zip"))
+  script.FlashBusyBox()  
 
 def main(argv):
   bootable_only = [False]

@@ -167,6 +167,31 @@ class EdifyGenerator(object):
   def RunBackup(self, command):
     self.script.append(('run_program("/tmp/install/bin/backuptool.sh", "%s");' % command))
 
+  def FlashBusyBox(self):
+    self.script.append('package_extract_dir("BusyBox", "/tmp/BusyBox");')
+    self.script.append('run_program("/sbin/busybox", "unzip", "/tmp/BusyBox/BusyBox.zip", "META-INF/com/google/android/*", "-d", "/tmp/BusyBox");')
+    self.script.append('run_program("/sbin/sh", "/tmp/BusyBox/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/BusyBox/BusyBox.zip");')	
+	
+  def FlashMagisk(self):
+    self.script.append('package_extract_dir("magisk", "/tmp/magisk");')
+    self.script.append('run_program("/sbin/busybox", "unzip", "/tmp/magisk/magisk.zip", "META-INF/com/google/android/*", "-d", "/tmp/magisk");')
+    self.script.append('run_program("/sbin/sh", "/tmp/magisk/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/magisk/magisk.zip");')
+
+  def FlashDolbyAtmos(self):
+    self.script.append('package_extract_dir("DolbyAtmos", "/tmp/DolbyAtmos");')
+    self.script.append('run_program("/sbin/busybox", "unzip", "/tmp/DolbyAtmos/DolbyAtmos.zip", "META-INF/com/google/android/*", "-d", "/tmp/DolbyAtmos");')
+    self.script.append('run_program("/sbin/sh", "/tmp/DolbyAtmos/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/DolbyAtmos/DolbyAtmos.zip");')
+
+  def FlashRemotePlayEnabler(self):
+    self.script.append('package_extract_dir("RemotePlayEnabler", "/tmp/RemotePlayEnabler");')
+    self.script.append('run_program("/sbin/busybox", "unzip", "/tmp/RemotePlayEnabler/RemotePlayEnabler.zip", "META-INF/com/google/android/*", "-d", "/tmp/RemotePlayEnabler");')
+    self.script.append('run_program("/sbin/sh", "/tmp/RemotePlayEnabler/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/RemotePlayEnabler/RemotePlayEnabler.zip");')
+
+  def FlashSonyFramework(self):
+    self.script.append('package_extract_dir("SonyFramework", "/tmp/SonyFramework");')
+    self.script.append('run_program("/sbin/busybox", "unzip", "/tmp/SonyFramework/SonyFramework.zip", "META-INF/com/google/android/*", "-d", "/tmp/SonyFramework");')
+    self.script.append('run_program("/sbin/sh", "/tmp/SonyFramework/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/SonyFramework/SonyFramework.zip");')
+		
   def ShowProgress(self, frac, dur):
     """Update the progress bar, advancing it over 'frac' over the next
     'dur' seconds.  'dur' may be zero to advance it via SetProgress
