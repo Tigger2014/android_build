@@ -1,9 +1,16 @@
+# TUB version
+
+PRODUCT_VERSION_YEAR := 17
+PRODUCT_VERSION_MONTH := 12
+PRODUCT_VERSION_MINOR := 0
+
+TUB_VERSION := $(PRODUCT_VERSION_YEAR).$(PRODUCT_VERSION_MONTH).$(PRODUCT_VERSION_MINOR)
 
 # List of variables we want to print in the build banner.
 print_build_config_vars := \
   PLATFORM_VERSION_CODENAME \
   PLATFORM_VERSION \
-  RR_VERSION \
+  TUB_VERSION \
   TARGET_PRODUCT \
   TARGET_BUILD_VARIANT \
   TARGET_BUILD_TYPE \
@@ -117,6 +124,14 @@ endif
 ifneq ($(filter report_config,$(DUMP_MANY_VARS)),)
 # Construct the shell commands that print the config banner.
 report_config_sh := echo '============================================';
+report_config_sh += echo '                                            ';
+report_config_sh += echo '               TEAM (UB) ROM                ';
+report_config_sh += echo '                                            ';
+report_config_sh += echo '                 BASED  ON                  ';
+report_config_sh += echo '                                            ';
+report_config_sh += echo '              OREO RELEASE 33               ';
+report_config_sh += echo '        TUB-$(TUB_VERSION) $(PLATFORM_VERSION) $(TARGET_PLATFORM_VERSION) ';
+report_config_sh += echo '============================================';
 report_config_sh += $(foreach v,$(print_build_config_vars),echo '$v=$($(v))';)
 report_config_sh += echo '============================================';
 endif
