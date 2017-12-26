@@ -498,6 +498,23 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   system_progress = 0.75
 
+  script.Print("                                          ");
+  script.Print("                                          ");
+  script.Print("               TEAM (UB) ROM              ");
+  script.Print("                  v18.1.0                 ");
+  script.Print("                                          ");
+  script.Print("                 BASED  ON                ");
+  script.Print("                     _           _     _  ");
+  script.Print("     /\             | |         (_)   | | ");
+  script.Print("    /  \   _ __   __| |_ __ ___  _  __| | ");
+  script.Print("   / /\ \ | '_ \ / _\`| '__/ _ \| |/ _\`| ");
+  script.Print("  / ____ \| | | | (_| | | | (_) | | (_| | ");
+  script.Print(" /_/    \_\_| |_|\__,_|_|  \___/|_|\__,_| ");
+  script.Print("                                          ");
+  script.Print("      OREO 8.1.0 R7 - OPM3.171019.013     ");
+  script.Print("                                          ");
+  script.Print("                                          ");
+
   if OPTIONS.wipe_user_data:
     system_progress -= 0.1
   if HasVendorPartition(input_zip):
