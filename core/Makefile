@@ -2721,8 +2721,8 @@ $(call dist-for-goals,sdk,$(NDK_SYSROOT_TARGET))
 ifeq ($(build_ota_package),true)
 # -----------------------------------------------------------------
 # OTA update package
+name := tub-$(TARGET_PRODUCT)
 
-name := $(TARGET_PRODUCT)
 ifeq ($(TARGET_BUILD_TYPE),debug)
   name := $(name)_debug
 endif
