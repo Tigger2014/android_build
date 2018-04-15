@@ -210,7 +210,7 @@ def AppendAssertions(script, info_dict, oem_dicts=None):
       device = GetBuildProp("ro.product.device", info_dict)
     else:
       device = OPTIONS.override_device
-    script.AssertDevice(device)
+    #script.AssertDevice(device)
   else:
     if not oem_dicts:
       raise common.ExternalError(
@@ -482,6 +482,25 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: %s" % target_fp)
 
+  #Print ASCII
+  script.Print("******************************************");
+  script.Print("                                          ");
+  script.Print("                                          ");
+  script.Print("               TEAM (UB) ROM              ");
+  script.Print("                                          ");
+  script.Print("                 BASED  ON                ");
+  script.Print("                     _           _     _  ");
+  script.Print("     /\             | |         (_)   | | ");
+  script.Print("    /  \   _ __   __| |_ __ ___  _  __| | ");
+  script.Print("   / /\ \ | '_ \ / _\`| '__/ _ \| |/ _\`| ");
+  script.Print("  / ____ \| | | | (_| | | | (_) | | (_| | ");
+  script.Print(" /_/    \_\_| |_|\__,_|_|  \___/|_|\__,_| ");
+  script.Print("                                          ");
+  script.Print("              OREO RELEASE 33             ");
+  script.Print("                                          ");
+  script.Print("                                          ");
+  script.Print("******************************************");
+  script.AppendExtra("sleep (2);")
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   device_specific.FullOTA_InstallBegin()
 
@@ -497,36 +516,14 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   system_progress = 0.75
 
-  script.Print(" ")
-  script.Print(" ")
-  script.Print(" ")
-  script.Print(" RRRRRRRRRRRRRRRRR     RRRRRRRRRRRRRRRRR   ")
-  script.Print(" R::::::::::::::::R    R::::::::::::::::R  ")
-  script.Print(" R::::::RRRRRR:::::R   R::::::RRRRRR:::::R ")
-  script.Print(" RR:::::R     R:::::R  RR:::::R     R:::::R")
-  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-  script.Print("   R::::RRRRRR:::::R     R::::RRRRRR:::::R ")
-  script.Print("   R:::::::::::::RR      R:::::::::::::RR  ")
-  script.Print("   R::::RRRRRR:::::R     R::::RRRRRR:::::R ")
-  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-  script.Print(" RR:::::R     R:::::R  RR:::::R     R:::::R")
-  script.Print(" R::::::R     R:::::R  R::::::R     R:::::R")
-  script.Print(" R::::::R     R:::::R  R::::::R     R:::::R")
-  script.Print(" RRRRRRRR     RRRRRRR  RRRRRRRR     RRRRRRR")
-  script.Print(" ")
-  script.Print(" ")
-  
-  if GetBuildProp("ro.rr.version", OPTIONS.info_dict) is not None:
-    buildid = GetBuildProp("ro.rr.version", OPTIONS.info_dict)
-    buildtype = GetBuildProp("rr.build.type", OPTIONS.info_dict)
+
+  if GetBuildProp("ro.tub.display.version", OPTIONS.info_dict) is not None:
+    buildid = GetBuildProp("ro.tub.display.version", OPTIONS.info_dict)
     buildidn = GetBuildProp("ro.build.id", OPTIONS.info_dict)
     buildday = GetBuildProp("ro.build.date", OPTIONS.info_dict)
     securep = GetBuildProp("ro.build.version.security_patch", OPTIONS.info_dict)
-    buildhst = GetBuildProp("ro.build.host", OPTIONS.info_dict)
-    device = GetBuildProp("ro.rr.device", OPTIONS.info_dict)
+    density = GetBuildProp("ro.sf.lcd_density", OPTIONS.info_dict,False)
+    device = GetBuildProp("ro.tub.device", OPTIONS.info_dict)
     androidver = GetBuildProp("ro.build.version.release", OPTIONS.info_dict)
     manufacturer = GetBuildProp("ro.product.manufacturer", OPTIONS.info_dict, False)
     density = GetBuildProp("ro.sf.lcd_density", OPTIONS.info_dict, False)
