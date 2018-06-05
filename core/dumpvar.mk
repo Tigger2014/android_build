@@ -1,7 +1,7 @@
 # TUB version
 
 PRODUCT_VERSION_YEAR := 18
-PRODUCT_VERSION_MONTH := 4
+PRODUCT_VERSION_MONTH := 7
 PRODUCT_VERSION_MINOR := 0
 
 TUB_VERSION := $(PRODUCT_VERSION_YEAR).$(PRODUCT_VERSION_MONTH).$(PRODUCT_VERSION_MINOR)
@@ -128,6 +128,12 @@ report_config_sh += echo '                                            ';
 report_config_sh += echo '               TEAM (UB) ROM                ';
 report_config_sh += echo '                                            ';
 report_config_sh += echo '                 BASED  ON                  ';
+report_config_sh += echo '                     _           _     _    ';
+report_config_sh += echo '     /\             | |         (_)   | |   ';
+report_config_sh += echo '    /  \   _ __   __| |_ __ ___  _  __| |   ';
+report_config_sh += echo '   / /\ \ | '_ \ / _\`| '__/ _ \| |/ _\`|   ';
+report_config_sh += echo '  / ____ \| | | | (_| | | | (_) | | (_| |   ';
+report_config_sh += echo ' /_/    \_\_| |_|\__,_|_|  \___/|_|\__,_|   ';
 report_config_sh += echo '                                            ';
 report_config_sh += echo '              OREO RELEASE 33               ';
 report_config_sh += echo '        TUB-$(TUB_VERSION) $(PLATFORM_VERSION) $(TARGET_PLATFORM_VERSION) ';
